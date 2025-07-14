@@ -1,7 +1,9 @@
 const express = require("express");
 const cors = require("cors");
+const morgan = require("morgan");
 const { config } = require("./app/config");
 const tutorialRoutes = require("./app/routes/tutorial.routes.js");
+
 
 const app = express();
 
@@ -9,6 +11,7 @@ var corsOptions = {
   origin: "http://localhost:8080",
 };
 
+app.use(morgan("dev"));
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
